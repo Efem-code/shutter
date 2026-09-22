@@ -121,6 +121,10 @@ const nearestSpeed = t => [1/8000, 1/4000, 1/2000, 1/1000, 1/500, 1/250, 1/200, 
 function renderTools() {
   const specCams = state.cam === 'both' ? ['r8', '5d2'] : [state.cam];
   return `<h2>Field tools</h2>
+  <div class="tool wb-card"><h4>🎨 White balance meter</h4>
+    <p class="muted">Uses the phone’s camera to read the colour of the light and tells you which Kelvin and WB shift to set on the R8 and 5D II. Set both bodies to the same value and their colours will match.</p>
+    <p><button class="btn primary" id="wb-open">Open meter</button> <button class="btn" data-tip="b-customwb">Custom WB (most accurate)</button></p>
+    <table class="specs">${WB_PRESETS.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</table></div>
   <div class="tool"><h4>Depth of field</h4><p class="muted">How much is sharp, front to back. Full‑frame (both bodies).</p>
     <div class="fields">
       <label class="f">Focal length (mm)<input id="d-f" type="number" inputmode="decimal" value="50"></label>
@@ -242,6 +246,7 @@ document.addEventListener('click', e => {
   const tip = e.target.closest('[data-tip]'); if (tip) return openTip(tip.dataset.tip);
   const rec = e.target.closest('[data-recipe]'); if (rec) return openRecipe(rec.dataset.recipe);
   const cat = e.target.closest('[data-cat]'); if (cat) { state.cat = cat.dataset.cat; return render(); }
+  if (e.target.id === 'wb-open') return WB.open();
   if (e.target.id === 'reset-check') { state.check = {}; store.set('check', {}); return render(); }
 });
 document.addEventListener('keydown', e => {

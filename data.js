@@ -200,6 +200,15 @@ const TIPS = [
     body: 'Their sensors render colour a little differently. Use the same picture style and a Kelvin white balance on both, shoot one frame of a grey card or colour checker with each body in each lighting setup, then sync the correction across each camera’s photos in the edit.' },
   { id: 'b-roles', cam: 'both', cat: 'pair', title: 'Give each body a job',
     body: 'Put the R8 on the tough jobs: low light, moving people, eye‑AF candids, silent moments and video. Give the 5D II the jobs it does beautifully: well‑lit portraits, flash work, groups, details and a second angle on a tripod. It also carries a wide lens, so you never swap lenses at a key moment.' },
+  { id: 'b-customwb', cam: 'both', cat: 'expo', title: 'Custom white balance: the most accurate way',
+    body: 'A grey card (or plain white paper) photographed in your light gives the camera an exact reference, which beats any meter, including the one in this app. Redo it whenever the light changes: moving from the ceremony hall to the reception room, or at sunset.',
+    steps: ['Put a grey card or white paper where your subject is, facing the camera and in the same light.',
+            'Fill the centre of the frame with it (focus doesn’t matter; switch the lens to MF if it hunts) and take a picture. Keep the exposure normal, not blown out.',
+            '<b>R8:</b> Shooting menu → Custom white balance → choose that picture → OK. Then set WB to the Custom icon.',
+            '<b>5D II:</b> Menu → Custom WB → choose that picture → SET. Then press the WB button and select the Custom icon.',
+            'Two bodies: do it on both with the same card, or read the Kelvin off the meter and dial it into both.'] },
+  { id: 'b-wbshift', cam: 'both', cat: 'expo', title: 'Fixing green or magenta light',
+    body: 'Kelvin only moves colour between blue and amber. Fluorescent tubes and cheap LEDs also add a <b>green</b> cast, and some LEDs add <b>magenta</b>. That’s what <b>WB Shift</b> is for: shifting toward M cancels green, and toward G cancels magenta. The meter suggests steps (e.g. M3). R8: Shooting menu → WB correction; 5D II: Menu → WB SHIFT/BKT. Set it back to 0 afterwards.' },
   { id: 'b-sync', cam: 'both', cat: 'flash', title: '1/200 is your flash limit',
     body: 'Both bodies sync at 1/200. Any faster and a dark band appears across the frame, unless the flash is in high‑speed sync (HSS), which costs a lot of power. Outdoors in sun, HSS or an ND filter is how you shoot wide open with fill flash.' },
   { id: 'b-bounce', cam: 'both', cat: 'flash', title: 'Bounce, don’t blast',
@@ -290,6 +299,18 @@ const RECIPES = [
     r8:  { Mode: 'Video, manual exposure', Aperture: 'f/2.8–f/4', Shutter: '1/50 (25p) or 1/60 (30p)', ISO: 'As low as the light allows', Focus: 'Movie Servo AF, eye detection', Format: '4K 25/30p, normal picture style', Audio: 'External mic, manual levels, peaks −12 dB' },
     m2:  { Mode: 'Movie, manual exposure', Aperture: 'f/2.8–f/4', Shutter: '1/50 (25p) or 1/60 (30p)', ISO: 'As low as the light allows', Focus: 'Manual — set it and keep the subject seated', Format: '1080p 25/30p, Neutral picture style', Audio: 'Separate recorder; clips stop at 4 GB' },
     notes: 'Use both at once: R8 on a medium shot, 5D II on a tighter or side angle. Clap once at the start of each take to sync the clips.' }
+];
+
+const WB_PRESETS = [
+  ['Candlelight', '≈ 1900 K (cameras bottom out at 2500 K)'],
+  ['Household bulbs / warm LED', '2700–3000 K'],
+  ['Halogen, stage tungsten', '3200 K'],
+  ['Sunrise / sunset', '3500–4000 K'],
+  ['Fluorescent / office LED', '4000–5000 K, often + M shift'],
+  ['Midday sun · flash', '5200–5800 K'],
+  ['Overcast', '6000–6500 K'],
+  ['Open shade', '7000–8000 K'],
+  ['Blue hour', '9000 K +']
 ];
 
 const CHECKLIST = [

@@ -2,7 +2,7 @@
 /* BUILD is rewritten by deploy.sh on every deploy. It has to change or the
    browser sees an identical service worker, keeps the old one, and the update
    never reaches the phone. */
-const BUILD = '20260921-215641';
+const BUILD = '20260921-220030';
 const CACHE = 'shutter-' + BUILD;
 const SHELL = [
   './', './index.html', './styles.css', './data.js', './wb.js', './app.js',
@@ -10,7 +10,12 @@ const SHELL = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  /* cache: 'reload' skips the browser's HTTP cache. GitHub Pages sends
+     max-age=600, so a plain addAll could store the *previous* app.js under the
+     new build's name and the update would silently never show. */
+  e.waitUntil(caches.open(CACHE)
+    .then(c => Promise.all(SHELL.map(u => fetch(u, { cache: 'reload' }).then(r => c.put(u, r)))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -32,7 +37,7 @@ self.addEventListener('fetch', e => {
      update that looked like it worked. */
   e.respondWith(
     caches.match(req).then(hit => {
-      const fresh = fetch(req).then(res => {
+      const fresh = fetch(req, { cache: 'no-cache' }).then(res => {
         if (res && res.status === 200 && res.type === 'basic') {
           const copy = res.clone();
           caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});

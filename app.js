@@ -278,7 +278,10 @@ window.addEventListener('popstate', () => { $('#sheet').hidden = true; document.
 render();
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
+    // An installed app can stay open for days; look for a new build whenever it comes back to the front
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) reg.update().catch(() => {}); });
+  });
   // Only reload onto a new build, not when the very first worker takes control
   let reloaded = !navigator.serviceWorker.controller;
   navigator.serviceWorker.addEventListener('controllerchange', () => { if (!reloaded) { reloaded = true; location.reload(); } });

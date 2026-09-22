@@ -1,0 +1,17 @@
+{
+  "name": "Shutter — R8 & 5D II field guide",
+  "short_name": "Shutter",
+  "description": "Tips, settings recipes and field tools for shooting the Canon EOS R8 and 5D Mark II. Works offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#16140f",
+  "theme_color": "#16140f",
+  "categories": ["photo", "education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

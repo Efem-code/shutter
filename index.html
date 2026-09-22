@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shutter</title>
+<meta name="description" content="Tips, settings recipes and field tools for shooting the Canon EOS R8 and 5D Mark II. Works offline.">
+<meta name="theme-color" content="#16140f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <div class="brand"><span class="dot"></span>Shutter</div>
+    <div class="seg" id="cam-seg" role="tablist" aria-label="Camera">
+      <button data-cam="both">Both</button>
+      <button data-cam="r8">R8</button>
+      <button data-cam="5d2">5D II</button>
+    </div>
+  </header>
+
+  <main id="view"></main>
+
+  <nav class="tabs" aria-label="Sections">
+    <button data-tab="tips"><span>💡</span>Tips</button>
+    <button data-tab="recipes"><span>🎛️</span>Recipes</button>
+    <button data-tab="tools"><span>📐</span>Tools</button>
+    <button data-tab="check"><span>✅</span>Checklist</button>
+    <button data-tab="saved"><span>★</span>Saved</button>
+  </nav>
+</div>
+
+<div id="sheet" class="sheet" hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true">
+    <button class="close" id="sheet-close" aria-label="Close">✕</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

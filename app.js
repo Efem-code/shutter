@@ -101,6 +101,7 @@ function openRecipe(id) {
   if (state.cam !== 'r8') cols.push(recipeCol('5D Mark II', 'm2', r.m2));
   openSheet(`<h2>${r.icon} ${esc(r.title)}</h2><p class="muted">${esc(r.when)}</p>
     <div class="cols ${cols.length > 1 ? 'two' : ''}">${cols.join('')}</div>
+    ${r.lens ? `<div class="note">🔭 <b>Your lenses:</b> ${esc(r.lens)}</div>` : ''}
     <div class="note">💡 ${esc(r.notes)}</div>`);
 }
 
